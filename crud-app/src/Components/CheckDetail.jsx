@@ -3,15 +3,24 @@ import React from 'react'
 import { Route, Router, useNavigate , Link} from 'react-router-dom';
 import AddDetails from './AddDetails';
 import EmployeeCard from './EmployeeCard';
-
+import axios from 'axios';
 const Employee = [{
   name:'',
   email:'',
   dob:'',
   postImage:'',
 }]
-
-
+const bb = axios.get('http://localhost:7000/user').then((response) => {
+  console.log(response.data)});
+  const bc = axios.get('http://localhost:7000/user').then((response) => {
+  console.log(response.data)});
+console.log(bc)
+const aa = axios.put('http://localhost:7000/user/:id').then((response) => {
+  console.log(response.data)});
+  console.log(aa.data);
+  const ab = axios.delete('http://localhost:7000/user/:id').then((response) => {
+    console.log(response.data)});
+  console.log(ab.data);
 const CheckDetail = ({emp,arr}) => {
 
   
@@ -40,8 +49,8 @@ const navigate =useNavigate();
       <td>{i.email}</td>
       <td>{i.dob}</td>
       <td>{i.postImage}</td>
-      <td><button>Update</button></td>
-      <td><button>Delete</button></td>
+      <td><button onClick={axios.put('http://localhost:7000/user/:id', {})}>Update</button></td>
+      <td><button onClick={console.log(bb)}>Delete</button></td>
       <td> <li><Link to="/EmployeeCard">View Card</Link></li></td>
     </tr>
       </>
